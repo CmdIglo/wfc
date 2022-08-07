@@ -60,4 +60,5 @@ if __name__ == "__main__":
     trained_model, symbols = model.train()
 
     # generating a new image
+    # TODO: include in WFC class
     generateImage(trained_model, 2, 2)
