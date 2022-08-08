@@ -50,6 +50,17 @@ def generateImage(information_list, width, height):
     print()
     print(output_img)
 
+    show(output_img)
+
+# show the generated image
+def show(image):
+    for line in image:
+        for i in range(0, len(line)):
+            if i == len(line)-1:
+                print(line[i], end="\n")
+            else:
+                print(line[i], end=" ")
+
 # starting flag of script
 if __name__ == "__main__":
 
