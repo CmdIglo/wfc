@@ -8,10 +8,12 @@ from wfc import WFC
 # c : coast
 # s : sea
 # l : land
+# I : island
 sample_img = [
     ['L', 'L', 'M', 'C'],
     ['M', 'L', 'C', 'S'],
     ['L', 'L', 'C', 'S'],
+    ['L', 'C', 'S', 'I']
 ]
 
 # all symbols of the sample image for later usage
@@ -72,4 +74,4 @@ if __name__ == "__main__":
 
     # generating a new image
     # TODO: include in WFC class
-    generateImage(trained_model, 2, 2)
+    generateImage(trained_model, 10, 10)
