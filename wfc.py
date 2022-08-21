@@ -19,7 +19,7 @@ class WFC():
         # looks like: [[letter, (letter that can come, next, to it)]] in the end
         all_sym = []
 
-        # fetching all unique characters i.e. s, c, l
+        # fetching all unique characters i.e. s, c, l, i
         for line in self.sample_img:
             for i in line:
                 if i not in all_sym:
@@ -42,7 +42,9 @@ class WFC():
 
                 # test the line under current line for adjacent character
                 # still in development, currently built to be used as test
+                # will be triggered if a line doesn't contain the character all_sym[x]
                 else:
+                    # checks if we are not on last line
                     if (self.findIndex(self.sample_img, line)[-1]+1) != len(self.sample_img)+1:
                         print(self.sample_img[self.findIndex(self.sample_img, line)[-1]], "Test")
         

@@ -5,9 +5,9 @@ from wfc import WFC
 
 # the image the wfc "learns" from;
 # simple three by three image where:
-# c : coast
-# s : sea
-# l : land
+# C : coast
+# S : sea
+# L : land
 # I : island
 sample_img = [
     ['L', 'L', 'M', 'C'],
@@ -23,6 +23,8 @@ symbols = []
 # takes in the information list, a width and a height (i.e. the size of the picture to be created) as arguments
 # and returns a newly generated "image"
 def generateImage(information_list, width, height):
+    
+    # initializing variables
     information_list=information_list
     width=width
     height=height
@@ -39,7 +41,7 @@ def generateImage(information_list, width, height):
                 i.append('P')
 
     # row after row will be populated
-    # TODO: finish the generation algorithm
+    # TODO: finish the generation algorithm -> see function "evalNxt"
     for i in range(0, len(output_img)):
         for j in range(0, len(output_img[i])):
             # first character will be chosen randomly
@@ -54,6 +56,10 @@ def generateImage(information_list, width, height):
 
     show(output_img)
 
+# evaluating the next image-"pixel"
+def evalNxt(image, pos):
+    pass
+
 # show the generated image
 def show(image):
     for line in image:
@@ -62,6 +68,7 @@ def show(image):
                 print(line[i], end="\n")
             else:
                 print(line[i], end=" ")
+
 
 # starting flag of script
 if __name__ == "__main__":
@@ -73,5 +80,5 @@ if __name__ == "__main__":
     trained_model, symbols = model.train()
 
     # generating a new image
-    # TODO: include in WFC class
+    # TODO: include in WFC class ?
     generateImage(trained_model, 10, 10)
