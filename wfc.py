@@ -34,11 +34,21 @@ class WFC():
                 
                 # for every symbol in the "all_sym" array test if the symbol is in the line of the sample image
                 if all_sym[x] in line:
+
+                    # TODO: rewrite the algorithm to a simpler form, where the index of the symbol in the line is taken
+                    # and add the symbols to the sym_arr which are at pos sym_index-1 and sym_index+1
+                    #
                     # for every symbol in the line in the sample image 
                     for i in range(0, len(line)):
                         # test if the character of the sample image is next to the the character this script is runnning for
                         if i == self.findIndex(line, all_sym[x])[0]+1 or i == self.findIndex(line, all_sym[x])[0]-1:
                             sym_arr.append(line[i])
+
+                    # find index of the symbol in current line and append the symbols to the sym_arr which are directly adjacent to the symbol
+                    # above and under the symbol
+                    index_sym = self.findIndex(line, all_sym[x])[0]
+
+                # check if the line, where the symbol isn't in is directly under or directly above a line, where the symbol is in
 
                 # test the line under current line for adjacent character
                 # still in development, currently built to be used as test

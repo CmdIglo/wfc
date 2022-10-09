@@ -57,6 +57,7 @@ def generateImage(information_list, width, height):
     show(output_img)
 
 # evaluating the next image-"pixel"
+# recursive
 def evalNxt(image, pos):
     pass
 
