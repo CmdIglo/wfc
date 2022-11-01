@@ -3,6 +3,9 @@
 import random
 from wfc import WFC
 
+# importing the image-generation functions from Generator
+from functions.Generator import Generator
+
 # the image the wfc "learns" from;
 # simple three by three image where:
 # C : coast
@@ -79,6 +82,5 @@ if __name__ == "__main__":
     # training the model and fetching the information list and the unique symbols of the sample image
     trained_model, symbols = model.train()
 
-    # generating a new image
-    # TODO: include in WFC class ?
-    generateImage(trained_model, 10, 10)
+    Gen = Generator(information_list=trained_model, width=10, height=10, symbols=symbols)
+    Gen.generate()
