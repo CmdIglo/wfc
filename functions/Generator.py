@@ -7,6 +7,10 @@ import random
 
 class Generator:
     
+    # information_list, list : List of every element in the sample image and its adjacent elements
+    # width, int             : Width of the new image 
+    # height, int            : Height of the new image
+    # symbols, list          : List of all symbols in the sample image
     def __init__(self, information_list, width, height, symbols):
         self.information_list=information_list
         self.width=width
@@ -14,6 +18,7 @@ class Generator:
         self.symbols=symbols
         pass
 
+    # generates a new image from the information given in the "information-list"
     def generate(self):
 
         # output image
@@ -28,7 +33,7 @@ class Generator:
                     i.append('P')
 
         # row after row will be populated
-        # TODO: finish the generation algorithm -> see function "evalNxt"
+        # TODO: finish the generation algorithm -> see function "main.evalNxt"
         for i in range(0, len(output_img)):
             for j in range(0, len(output_img[i])):
                 # first character will be chosen randomly
@@ -43,6 +48,7 @@ class Generator:
 
         self.show(output_img)
 
+    # shows the generated image
     def show(self, image):
         
         for line in image:
