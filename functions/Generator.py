@@ -80,7 +80,23 @@ class Generator:
                             oList[y][x] = list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1])[random.randint(0, len(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1])-1)]
                             self.evalNext((y, xNext), oList=oList)
                         else:
-                            oList[y][x] = list(self.information_list[self.orderedSymbols.index([v for v in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) for w in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if v == w][random.randint(0, len([v for v in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) for w in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if v == w])-1)])][1])[random.randint(0, len(self.information_list[self.orderedSymbols.index([v for v in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) for w in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if v == w][random.randint(0, len([v for v in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) for w in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if v == w])-1)])][1]))]
+                            oList[y][x] = list(self.information_list[self.orderedSymbols\
+                                                .index([v for v in list(self.information_list[\
+                                                self.orderedSymbols.index(oList[yPrev][x])][1]) \
+                                                for w in list(self.information_list[self.orderedSymbols\
+                                                .index(oList[y][x-1])][1]) if v == w][random.randint(0, \
+                                                len([v for v in list(self.information_list[self.\
+                                                orderedSymbols.index(oList[yPrev][x])][1]) for w in\
+                                                list(self.information_list[self.orderedSymbols\
+                                                .index(oList[y][x-1])][1]) if v == w])-1)])][1])[random\
+                                                .randint(0, len(self.information_list[self.orderedSymbols\
+                                                .index([v for v in list(self.information_list[self\
+                                                .orderedSymbols.index(oList[yPrev][x])][1]) for w in \
+                                                list(self.information_list[self.orderedSymbols\
+                                                .index(oList[y][x-1])][1]) if v == w][random.randint(0, \
+                                                len([v for v in list(self.information_list[self.orderedSymbols\
+                                                .index(oList[yPrev][x])][1]) for w in list(self\
+                                                .information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if v == w])-1)])][1]))]
                             self.evalNext((y, xNext), oList=oList)
 
     # shows the generated image
