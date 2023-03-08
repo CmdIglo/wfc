@@ -30,23 +30,28 @@ class WFC():
         for x in range(0, len(all_sym)):
             
             sym_arr = []
-            for line in self.sample_img:
+            for line in range(0, len(self.sample_img)):
                 
                 # for every symbol in the "all_sym" array test if the symbol is in the line of the sample image
-                if all_sym[x] in line:
+                if all_sym[x] in self.sample_img[line]:
 
                     # TODO: rewrite the algorithm to a simpler form, where the index of the symbol in the line is taken
                     # and add the symbols to the sym_arr which are at pos sym_index-1 and sym_index+1
                     #
                     # for every symbol in the line in the sample image 
-                    for i in range(0, len(line)):
+                    for i in range(0, len(self.sample_img[line])):
                         # test if the character of the sample image is next to the the character this script is runnning for
-                        if i == self.findIndex(line, all_sym[x])[0]+1 or i == self.findIndex(line, all_sym[x])[0]-1:
-                            sym_arr.append(line[i])
+                        if (i == self.findIndex(self.sample_img[line], all_sym[x])[0]+1 or i == self.findIndex(self.sample_img[line], all_sym[x])[0]-1) and (self.sample_img[line][i] != all_sym[x]):
+                            sym_arr.append(self.sample_img[line][i])
 
                     # find index of the symbol in current line and append the symbols to the sym_arr which are directly adjacent to the symbol
                     # above and under the symbol
-                    index_sym = self.findIndex(line, all_sym[x])[0]
+                    # index_sym = self.findIndex(self.sample_img[line], all_sym[x])[0]
+                    # if line-1 < 0:
+                    #     sym_arr.append(self.sample_img[line-1][index_sym])
+                    # if line+1 > len(self.sample_img):
+                    #     sym_arr.append(self.sample_img[line+1][index_sym])
+
 
                 # check if the line, where the symbol isn't in is directly under or directly above a line, where the symbol is in
 
@@ -54,9 +59,11 @@ class WFC():
                 # still in development, currently built to be used as test
                 # will be triggered if a line doesn't contain the character all_sym[x]
                 else:
-                    # checks if we are not on last line
-                    if (self.findIndex(self.sample_img, line)[-1]+1) != len(self.sample_img)+1:
-                        print(self.sample_img[self.findIndex(self.sample_img, line)[-1]], "Test")
+                    #checks if the index tuple from the findIndex function contains values
+                    if len(list(self.findIndex(self.sample_img, line))) > 0:
+                        # checks if we are not on last line
+                        if (self.findIndex(self.sample_img, line)[-1]+1) != len(self.sample_img)+1:
+                            print(self.sample_img[self.findIndex(self.sample_img, line)[-1]], "Test")
         
             # for testing
             print(all_sym[x])
