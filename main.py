@@ -16,7 +16,8 @@ sample_img = [
     ['L', 'L', 'M', 'C'],
     ['M', 'L', 'C', 'S'],
     ['L', 'L', 'C', 'S'],
-    ['L', 'C', 'S', 'I']
+    ['L', 'C', 'S', 'I'],
+    ['I', 'M', 'S', 'S']
 ]
 
 # all symbols of the sample image for later usage

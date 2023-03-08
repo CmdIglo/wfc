@@ -46,11 +46,11 @@ class WFC():
 
                     # find index of the symbol in current line and append the symbols to the sym_arr which are directly adjacent to the symbol
                     # above and under the symbol
-                    # index_sym = self.findIndex(self.sample_img[line], all_sym[x])[0]
-                    # if line-1 < 0:
-                    #     sym_arr.append(self.sample_img[line-1][index_sym])
-                    # if line+1 > len(self.sample_img):
-                    #     sym_arr.append(self.sample_img[line+1][index_sym])
+                    index_sym = self.findIndex(self.sample_img[line], all_sym[x])[0]
+                    if line-1 >= 0 and (self.sample_img[line-1][index_sym] != all_sym[x]):
+                        sym_arr.append(self.sample_img[line-1][index_sym])
+                    if line+1 < len(self.sample_img) and (self.sample_img[line+1][index_sym] != all_sym[x]):
+                        sym_arr.append(self.sample_img[line+1][index_sym])
 
 
                 # check if the line, where the symbol isn't in is directly under or directly above a line, where the symbol is in
@@ -58,6 +58,7 @@ class WFC():
                 # test the line under current line for adjacent character
                 # still in development, currently built to be used as test
                 # will be triggered if a line doesn't contain the character all_sym[x]
+                # TODO: doesnt trigger, or I'm just dumb
                 else:
                     #checks if the index tuple from the findIndex function contains values
                     if len(list(self.findIndex(self.sample_img, line))) > 0:

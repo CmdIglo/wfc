@@ -16,6 +16,7 @@ class Generator:
         self.width=width
         self.height=height
         self.symbols=symbols
+        self.orderedSymbols=[x[0] for x in self.information_list]
         pass
 
     # generates a new image from the information given in the "information-list"
@@ -44,9 +45,42 @@ class Generator:
         print()
         print(self.information_list)
         print()
+        for y in range(0, len(output_img)-1):
+            if y == 0:
+                self.evalNext((0, 0), output_img)
+            else:
+                self.evalNext((y, 0), output_img)
         print(output_img)
 
         self.show(output_img)
+
+    # pos: tuple specifying the position for which the next values are being evaluated (y, x)
+    # list: the image being generated
+    # evaluates the next positions based on the current value
+    def evalNext(self, pos, oList):
+
+        y = pos[0]
+        x = pos[1]
+        xNext = x + 1
+        yPrev = y - 1
+
+        if y < len(oList):
+            if xNext < len(oList[y]):
+                # j = list of symbol and its possible neighbors
+                for j in self.information_list:
+                    # if the symbol is the same as the symbol for which this function is called
+                    # first line
+                    if oList[y][x] == j[0] and y == 0:
+                        oList[y][xNext] = list(j[1])[random.randint(0, len(j[1])-1)]  
+                        self.evalNext((y, xNext), oList=oList)
+                    # all other lines
+                    elif y != 0:
+                        if x == 0:
+                            oList[y][x] = list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1])[random.randint(0, len(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1])-1)]
+                            self.evalNext((y, xNext), oList=oList)
+                        else:
+                            oList[y][x] = list(self.information_list[self.orderedSymbols.index([y for y in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) and x for x in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if x == y][random.randint(0, len([y for y in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) and x for x in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if x == y])-1)])][1])[random.randint(0, len(self.information_list[self.orderedSymbols.index([y for y in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) and x for x in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if x == y][random.randint(0, len([y for y in list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1]) and x for x in list(self.information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if x == y])-1)])][1]))]
+                            self.evalNext((y, xNext), oList=oList)
 
     # shows the generated image
     def show(self, image):
