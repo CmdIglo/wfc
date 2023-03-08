@@ -80,6 +80,7 @@ class Generator:
                             oList[y][x] = list(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1])[random.randint(0, len(self.information_list[self.orderedSymbols.index(oList[yPrev][x])][1])-1)]
                             self.evalNext((y, xNext), oList=oList)
                         else:
+                            # TODO: IndexError: list index out of range line 84 > 101 > 101 > 101 > 81 > 52
                             oList[y][x] = list(self.information_list[self.orderedSymbols\
                                                 .index([v for v in list(self.information_list[\
                                                 self.orderedSymbols.index(oList[yPrev][x])][1]) \
