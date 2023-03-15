@@ -45,25 +45,59 @@ class Generator:
         print()
         print(self.information_list)
         print()
-        for y in range(0, len(output_img)-1):
-            if y == 0:
-                self.evalNext((0, 0), output_img)
-            else:
-                self.evalNext((y, 0), output_img)
-        print(output_img)
+        
+        #for y in range(0, len(output_img)-1):
+        #    if y == 0:
+        #        self.evalNext((0, 0), output_img)
+        #    else:
+        #        self.evalNext((y, 0), output_img)
+        #
+        #print(output_img)
 
-        self.show(output_img)
+        #self.evalNext((0,0), output_img)
+
+        self.show(self.evalNext((0,0), output_img))
 
     # pos: tuple specifying the position for which the next values are being evaluated (y, x)
     # list: the image being generated
     # evaluates the next positions based on the current value
     def evalNext(self, pos, oList):
 
+        # row number in the "image"
         y = pos[0]
+        # column number in the "image"
         x = pos[1]
-        xNext = x + 1
-        yPrev = y - 1
+        # xNext = x + 1
+        # yPrev = y - 1
 
+        initImage = oList
+
+        for j in range(0, len(oList)):
+            for k in range(0, len(oList[j])):
+                initImage[j][k] = self.symbols
+
+        out_image = initImage
+
+        # first position
+        if x == 0 and y == 0:
+            out_image[y][x] = out_image[y][x][random.randint(0,len(out_image[y][x])-1)]
+        # recursion
+        else:
+            pass
+
+        return out_image
+
+        """
+        for y in range(0, len(oList)-1):
+            for x in range(0, len(oList[y])-1):
+                if y == 0 and x == 0:
+                    x += 1
+
+                if y > 0:
+                    initN = 
+        """
+        
+        """
         if y < len(oList):
             if xNext < len(oList[y]):
                 # j = list of symbol and its possible neighbors
@@ -81,7 +115,10 @@ class Generator:
                             self.evalNext((y, xNext), oList=oList)
                         else:
                             # TODO: IndexError: list index out of range line 84 > 101 > 101 > 101 > 81 > 52
-                            oList[y][x] = list(self.information_list[self.orderedSymbols\
+                            oList[y][x] = 1
+                            
+                            
+                            list(self.information_list[self.orderedSymbols\
                                                 .index([v for v in list(self.information_list[\
                                                 self.orderedSymbols.index(oList[yPrev][x])][1]) \
                                                 for w in list(self.information_list[self.orderedSymbols\
@@ -98,8 +135,10 @@ class Generator:
                                                 len([v for v in list(self.information_list[self.orderedSymbols\
                                                 .index(oList[yPrev][x])][1]) for w in list(self\
                                                 .information_list[self.orderedSymbols.index(oList[y][x-1])][1]) if v == w])-1)])][1]))]
+                            
                             self.evalNext((y, xNext), oList=oList)
-
+        """
+                            
     # shows the generated image
     def show(self, image):
         
