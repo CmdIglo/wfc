@@ -81,9 +81,20 @@ class Generator:
         # first position
         if x == 0 and y == 0:
             out_image[y][x] = out_image[y][x][random.randint(0,len(out_image[y][x])-1)]
-        # recursion
-        else:
-            pass
+
+        x += 1
+
+        for n in range(y, len(out_image)):
+            if y == 0 and x == 1:
+                for m in range(x, len(out_image[y])):
+                    print('DEBUG')
+                    print(out_image[y][m-1])
+                    print(self.symbols.index(out_image[y][m-1]))
+                    out_image[y][m] = [z for z in self.symbols if z in self.information_list[self.symbols.index(out_image[y][m-1])][1]]
+                    break
+            else:
+                for o in range(x, len(out_image)):
+                    pass
 
         return out_image
 
