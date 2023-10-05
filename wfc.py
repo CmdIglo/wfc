@@ -75,9 +75,6 @@ class WFC():
             # bringing the return list into the correct form
             all_sym[x] = [all_sym[x], tuple(sym_arr)]
 
-        # for testing
-        print("-----------------")
-
         return all_sym, self.symbols
 
     # own function for finding multiple indices of a character in a list

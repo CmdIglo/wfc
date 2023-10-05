@@ -23,11 +23,6 @@ sample_img = [
 # all symbols of the sample image for later usage
 symbols = []
 
-# evaluating the next image-"pixel"
-# recursive (?)
-def evalNxt(image, pos):
-    pass
-
 # starting flag of script
 if __name__ == "__main__":
 
